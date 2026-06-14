@@ -1,0 +1,35 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# API keys - never commit these!
+*.keystore
+key.properties
+
+# Generated files
+app/src/main/assets/databases/
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.ear
+
+# Android Studio profiler
+*.hprof
+
+# Gradle cache
+.gradle/
+build/
