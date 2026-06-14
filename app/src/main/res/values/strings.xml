@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AI Video Generator</string>
+    <string name="title_home">Home</string>
+    <string name="title_generate">Create</string>
+    <string name="title_gallery">Gallery</string>
+    <string name="title_settings">Settings</string>
+    <string name="btn_generate">Generate Video</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_add_images">Add Images</string>
+    <string name="label_prompt">Describe your video</string>
+    <string name="label_style">Visual Style</string>
+    <string name="label_resolution">Resolution</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_api_key">API Key</string>
+    <string name="empty_gallery">No videos yet.\nCreate your first AI video!</string>
+    <string name="delete_confirm">Delete this video?</string>
+    <string name="generation_complete">Video generated successfully!</string>
+    <string name="generation_failed">Generation failed</string>
+</resources>
