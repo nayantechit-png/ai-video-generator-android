@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.aivideogen.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_generate"
+            app:destination="@id/generateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_home_to_gallery"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/generateFragment"
+        android:name="com.aivideogen.ui.generate.GenerateFragment"
+        android:label="Create Video"
+        tools:layout="@layout/fragment_generate">
+
+        <action
+            android:id="@+id/action_generate_to_gallery"
+            app:destination="@id/galleryFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.aivideogen.ui.gallery.GalleryFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aivideogen.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>
