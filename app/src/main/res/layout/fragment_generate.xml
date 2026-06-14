@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Section: Prompt -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Describe your video"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="E.g., A cinematic shot of a futuristic city at night..."
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/purple_500"
+            android:layout_marginBottom="4dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="4"
+                android:minLines="3"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvCharCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="12dp"
+            android:text="0/500"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp"
+            android:layout_marginStart="auto" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Negative prompt (what to avoid)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNegativePrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Section: Images -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Source Images (optional)"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClearImages"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Clear"
+                android:textSize="12sp"
+                android:visibility="gone"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="@color/text_secondary" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvImageCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No images selected"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvImages"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddImages"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="📷  Add Images from Gallery"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/purple_500"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Section: Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generation Settings"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- AI Provider -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="AI Provider" android:textColor="@color/text_secondary" android:textSize="12sp"
+            android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerProvider"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Style -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Visual Style" android:textColor="@color/text_secondary" android:textSize="12sp"
+            android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerStyle"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Resolution -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Resolution" android:textColor="@color/text_secondary" android:textSize="12sp"
+            android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerResolution"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Duration -->
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Duration" android:textColor="@color/text_secondary" android:textSize="12sp"
+            android:layout_marginBottom="4dp"/>
+        <Spinner android:id="@+id/spinnerDuration"
+            android:layout_width="match_parent" android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Motion Strength -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Motion Strength" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+            <TextView android:id="@+id/tvMotionValue" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="0.7"
+                android:textColor="@color/purple_500" android:textSize="12sp"/>
+        </LinearLayout>
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderMotion"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:valueFrom="0.1" android:valueTo="1.0" android:value="0.7"
+            android:stepSize="0.1"
+            app:thumbColor="@color/purple_500"
+            app:trackColorActive="@color/purple_500"
+            android:layout_marginBottom="12dp" />
+
+        <!-- CFG Scale -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Prompt Adherence (CFG)" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+            <TextView android:id="@+id/tvCfgValue" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="7.0"
+                android:textColor="@color/purple_500" android:textSize="12sp"/>
+        </LinearLayout>
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderCfg"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:valueFrom="1.0" android:valueTo="20.0" android:value="7.0"
+            android:stepSize="0.5"
+            app:thumbColor="@color/purple_500"
+            app:trackColorActive="@color/purple_500"
+            android:layout_marginBottom="20dp" />
+
+        <!-- API Keys -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="API Configuration"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Stability AI API Key"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconMode="password_toggle"
+            android:layout_marginBottom="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApiKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="OpenAI API Key (optional)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconMode="password_toggle"
+            android:layout_marginBottom="24dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etApiKeyOpenai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Generate button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGenerate"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="🎬  Generate Video"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/purple_500"
+            app:cornerRadius="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Progress card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/generationProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/card_bg"
+            app:cardCornerRadius="12dp"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tvProgressMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Preparing…"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvProgressPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0%"
+                        android:textColor="@color/purple_500"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressTint="@color/purple_500" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Cancel"
+            android:visibility="gone"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/error_red"
+            android:textColor="@color/error_red"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
